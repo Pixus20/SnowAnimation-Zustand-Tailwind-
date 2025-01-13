@@ -6,6 +6,12 @@ interface Snow_btn {
   isHydrated: boolean;
 }
 
+interface DarkTheme_btn{
+  isActiveTheme:boolean;
+  toggleTheme:()=>void;
+  isHydratedTheme:boolean;
+}
+
 export const useButtonStoreSnow = create<Snow_btn>((set) => ({
   isActive: false, 
   isHydrated: false,
@@ -26,3 +32,25 @@ if (typeof window !== 'undefined') {
   });
 }
 
+export const useButtonStoreTheme = create<DarkTheme_btn>((set) => ({
+  isActiveTheme: false, 
+  isHydratedTheme: false,
+  toggleTheme: () =>
+    set((state) => {
+      const newTheme = !state.isActiveTheme ? 'dark' : 'light'; 
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('theme', newTheme);
+        document.documentElement.classList.toggle('dark', newTheme === 'dark'); 
+      }
+      return { isActiveTheme: newTheme === 'dark' };
+    }),
+}));
+
+if (typeof window !== 'undefined') {
+  const storedTheme = localStorage.getItem('theme') || 'light'; 
+  useButtonStoreTheme.setState({
+    isActiveTheme: storedTheme === 'dark',
+    isHydratedTheme: true,
+  });
+  document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+}
