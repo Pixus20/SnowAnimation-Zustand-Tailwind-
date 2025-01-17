@@ -1,11 +1,12 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 interface Product {
   id: number;
   name: string;
   description: string;
   price: number;
-  tags:[]
+  tags: string;
 }
 
 interface CartState {
@@ -15,18 +16,26 @@ interface CartState {
   clearCart: () => void;
 }
 
-export const useCartStore = create<CartState>((set) => ({
-  cart: [],
-  addToCart: (product) =>
-    set((state) => ({
-      cart: [...state.cart, product],
-    })),
-  removeFromCart: (id) =>
-    set((state) => ({
-      cart: state.cart.filter((product) => product.id !== id),
-    })),
-  clearCart: () =>
-    set(() => ({
+export const useCartStore = create<CartState>()(
+  persist(
+    (set) => ({
       cart: [],
-    })),
-}));
+      addToCart: (product) =>
+        set((state) => ({
+          cart: [...state.cart, product],
+        })),
+      removeFromCart: (id) =>
+        set((state) => ({
+          cart: state.cart.filter((product) => product.id !== id),
+        })),
+      clearCart: () =>
+        set(() => ({
+          cart: [],
+        })),
+    }),
+    {
+      name: 'cart-storage',
+    }
+  )
+);
+

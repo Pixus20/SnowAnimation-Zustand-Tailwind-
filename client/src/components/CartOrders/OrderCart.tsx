@@ -1,22 +1,41 @@
+'use client';
 
-export const OrderCart = () => {
+import { useCartStore } from "@/storage/cart.store";
+import { LucideTrash2 } from "lucide-react";
+
+const OrderCart = () => {
+  const { cart, removeFromCart } = useCartStore();
+
   return (
-    <div className="w-full flex flex-col sm:flex-row justify-around items-center bg-green-400 sm:px-1 px-0 py-1  rounded-md my-1">
-      <div className="w-[140px] h-[140px] flex justify-center items-center">IMAGE</div>
-      <div className="flex flex-col items-start justify-start">
-        <h1>Title</h1>
-        <p>Description</p>
-        <div className="flex flex-col">
-          <h2>Tags:</h2>
-          <div className="flex">
-            <p className="flex w-[180px] justify-between">
-              <a href="#">Red</a>
-              <a href="#">Mechanic</a>
-              <a href="#">Big</a>
-            </p>
-          </div>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Корзина</h1>
+      
+      {cart.length === 0 ? (
+        <p>Корзина порожня</p>
+      ) : (
+        <div>
+          {cart.map((item) => (
+            <div
+              key={item.id}
+              className="border p-4 mb-2 rounded-lg flex justify-between items-center"
+            >
+              <div>
+                <h2 className="text-lg font-semibold">{item.name}</h2>
+                <p>{item.description}</p>
+                <p className="font-bold">{item.price} грн</p>
+              </div>
+              <button
+                onClick={() => removeFromCart(item.id)}
+                className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
+              >
+                <LucideTrash2/>
+              </button>
+            </div>
+          ))}
         </div>
-      </div>
+      )}
     </div>
-  )
-}
+  );
+};
+
+export default OrderCart;
