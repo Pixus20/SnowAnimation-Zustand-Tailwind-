@@ -2,13 +2,13 @@
 const Category = () => {
   return (
    <div className="flex gap-5 items-center">
-   <label htmlFor="category" className="uppercase font-semibold">
+   <label htmlFor="category" className="uppercase font-semibold text-white">
      Категорія :
    </label>
    <select
      name="category"
      id="category"
-     className="p-2 border-none rounded-sm bg-green-500 "
+     className="p-2 border-none rounded-sm bg-green-500 text-white"
    >
      <option value="mechanic" className="bg-green-500">
        Механічні

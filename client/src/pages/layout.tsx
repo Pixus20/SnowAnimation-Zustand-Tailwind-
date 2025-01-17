@@ -1,21 +1,4 @@
-// import Footer from "@/components/Footer/Footer";
-// import Header from "@/components/Header/Header";
-
-
-
-// const Layout = ({ children }: { children: React.ReactNode }) => {
-//   return (
-//     <>
-//       <Header />
-//       {children}
-//       <Footer />
-//     </>
-//   );
-// };
-
-// export default Layout;
-
-
+'use client'
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import { useButtonStoreTheme } from "@/storage/layout.store";
@@ -26,9 +9,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!isHydratedTheme) return;
-  
+
     const rootElement = document.documentElement;
-  
+
     if (isActiveTheme) {
       rootElement.classList.add("dark");
       rootElement.classList.remove("light");
@@ -39,15 +22,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   }, [isActiveTheme, isHydratedTheme]);
 
   if (!isHydratedTheme) {
-    return null; 
+    return null;
   }
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      {children}
+      <main className="flex-grow mt-[5rem] bg-purple-200">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 };
 

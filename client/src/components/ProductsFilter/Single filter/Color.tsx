@@ -1,14 +1,13 @@
-
 const Color = () => {
    return (
     <div className="flex gap-5 items-center">
-    <label htmlFor="color" className="uppercase font-semibold">
+    <label htmlFor="color" className="uppercase font-semibold text-white">
       Колір :
     </label>
     <select
       name="color"
       id="color"
-      className="p-2 border-none rounded-sm bg-green-500 "
+      className="p-2 border-none rounded-sm bg-green-500 text-white"
     >
       <option value="green" className="bg-green-500">
         Зелений

@@ -1,3 +1,5 @@
+import { LoadMore } from "@/components/Pagination/LoadMore";
+import Pagination from "@/components/Pagination/Pagination";
 import ProductList from "@/components/Products/ProductList";
 import Filter from "@/components/ProductsFilter/Filter";
 import { useButtonStoreTheme } from "@/storage/layout.store";
@@ -17,10 +19,12 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-purple-200 flex flex-col items-center justify-center">
+    <div className=" flex flex-col items-center justify-center">
       <div className="w-[80%] flex flex-col justify-center ">
         <Filter />
         <ProductList />
+        <LoadMore/>
+        <Pagination/>
       </div>
     </div>
   );
