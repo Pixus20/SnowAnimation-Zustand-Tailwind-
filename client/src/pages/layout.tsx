@@ -28,7 +28,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow mt-[5rem] bg-purple-200">{children}</main>
+      <main className="flex-grow mt-[5rem] bg-purple-200 mt ">{children}</main>
       <Footer />
     </div>
   );

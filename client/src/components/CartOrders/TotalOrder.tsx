@@ -25,7 +25,7 @@ export const TotalOrder = () => {
           >
             Очистити корзину
           </button>
-          <button className="p-2 uppercase bg-purple-200 rounded-md hover:bg-purple-700 transition-colors ease-in-out duration-300">
+          <button className="p-2 uppercase bg-purple-200 text-white rounded-md hover:bg-purple-700 transition-colors ease-in-out duration-300">
             Купити
           </button>
         </div>

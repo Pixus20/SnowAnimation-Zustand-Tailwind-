@@ -1,8 +1,8 @@
-import React from 'react'
+import UserPage from '@/components/Auth/UserPage'
 
 const index = () => {
   return (
-    <div>index</div>
+    <UserPage/>
   )
 }
 

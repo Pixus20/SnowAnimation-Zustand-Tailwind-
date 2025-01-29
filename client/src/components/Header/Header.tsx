@@ -47,6 +47,16 @@ const Header = () => {
                <ShoppingCart />
              </Link>
            </div>
+           <div className="text-white">
+            <Link href='/Login'>
+            Увійти
+            </Link>
+            </div>
+           <div className="text-white">
+            <Link href='/Register'>
+            Зареєструватися
+            </Link>
+            </div>
            <div className="Theme_btn text-white hover:text-black transition-colors duration-200 ease-in-out cursor-pointer">
             <Link href='User'>
               <User />
